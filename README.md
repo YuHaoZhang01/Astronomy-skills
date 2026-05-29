@@ -1,14 +1,14 @@
 # Astronomy Skills
 
-Reusable Codex skills for astronomy research workflows, starting with publication-style supernova light-curve plotting and designed to grow into a small open collection of repeatable research automation patterns.
+A personal backup of Codex skills for astronomy research workflows. The repository is mainly for keeping my own repeatable research habits portable, but it is public in case the patterns are useful to other researchers.
 
-**GitHub description:** Open Codex skills for astronomy research workflows, including supernova light-curve plotting, reusable analysis conventions, and publication-ready figure helpers.
+**GitHub description:** Personal Codex skills for astronomy research workflows, shared as reusable examples for light-curve plotting and research automation.
 
 ## Why This Repository Exists
 
-Research projects often reuse the same small workflows: plotting multiband light curves, organizing outputs, checking public data, preparing figures, or turning notebook habits into repeatable code. This repository stores those workflows as Codex skills so they can be reused across projects instead of rebuilt in every notebook.
+Research projects often reuse the same small workflows: plotting multiband light curves, organizing outputs, checking public data, preparing figures, or turning notebook habits into repeatable code. This repository stores my versions of those workflows as Codex skills so I can reuse them across machines and projects instead of rebuilding them in every notebook.
 
-The goal is lightweight research infrastructure, not a large software framework. Each skill should be narrow, practical, and easy to copy, inspect, modify, and run.
+The goal is lightweight research infrastructure, not a large software framework. Each skill should be narrow, practical, and easy to copy, inspect, modify, and run. Public reuse is welcome, but the repository is intentionally optimized for a working researcher's personal workflow.
 
 ## Repository Layout
 
@@ -37,7 +37,7 @@ Built-in systems include SDSS, ZTF, ATLAS, Swift/UVOT, PS1, LSST/Rubin, Mephisto
 
 ## Using The Skills
 
-Clone or download this repository, then install the skills into your local Codex skills folder:
+Clone or download this repository, then install the skills into a local Codex skills folder:
 
 ```powershell
 .\tools\install_to_codex_skills.ps1
@@ -79,7 +79,7 @@ git commit -m "Update SN light-curve plot style skill"
 
 ## Adding New Skills
 
-New skills should be workflow-oriented and small enough to inspect quickly. Good candidates include:
+New skills should come from repeated research tasks that are worth backing up and reusing. Good candidates include:
 
 - repeated astronomy plotting conventions
 - public data search and download workflows
@@ -87,7 +87,7 @@ New skills should be workflow-oriented and small enough to inspect quickly. Good
 - notebook-to-script cleanup routines
 - figure/table export helpers
 
-Prefer skills that encode stable research habits and avoid project-specific secrets, private data paths, API tokens, or generated outputs.
+Prefer skills that encode stable research habits and avoid project-specific secrets, private data paths, API tokens, or generated outputs. If a skill is too tied to one paper or one private dataset, keep it out of this public repository or strip it down to the reusable pattern.
 
 ## Publishing To GitHub
 
@@ -107,4 +107,4 @@ git push -u origin main
 
 ## License
 
-Add an open-source license before broad reuse. MIT or BSD-3-Clause are common choices for lightweight research tooling, but the final license choice should be explicit.
+Add an open-source license before relying on public reuse. MIT or BSD-3-Clause are common choices for lightweight research tooling, but the final license choice should be explicit.
