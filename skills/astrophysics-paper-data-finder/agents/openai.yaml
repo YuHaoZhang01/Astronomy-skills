@@ -1,0 +1,4 @@
+﻿interface:
+  display_name: "Astrophysics Paper Data Finder"
+  short_description: "Find astrophysics papers and public datasets"
+  default_prompt: "Use $astrophysics-paper-data-finder to locate recent astrophysics papers, preserve public data in original formats, and generate a Jupyter review notebook."
