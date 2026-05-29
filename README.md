@@ -1,4 +1,4 @@
-# Codex Skills
+# Astronomy Skills
 
 Personal Codex skills managed as a normal Git repository.
 
@@ -43,13 +43,13 @@ To install only one skill:
 If GitHub CLI is installed and authenticated:
 
 ```powershell
-gh repo create codex-skills --private --source . --remote origin --push
+gh repo create astronomy-skills --private --source . --remote origin --push
 ```
 
 Without GitHub CLI, create a private empty repository on GitHub, then run:
 
 ```powershell
-git remote add origin https://github.com/<USER>/codex-skills.git
+git remote add origin https://github.com/<USER>/astronomy-skills.git
 git branch -M main
 git push -u origin main
 ```
