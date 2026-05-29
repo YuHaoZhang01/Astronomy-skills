@@ -1,7 +1,5 @@
 param(
     [string[]]$Skill = @(
-        "astrophysics-paper-data-finder",
-        "hatch-pet",
         "sn-lightcurve-plot-style"
     ),
     [string]$CodexHome = "$env:USERPROFILE\.codex",
@@ -35,4 +33,3 @@ foreach ($name in $Skill) {
     Copy-Item -LiteralPath $source -Destination $repoSkills -Recurse -Force
     Write-Host "Synced $name"
 }
-

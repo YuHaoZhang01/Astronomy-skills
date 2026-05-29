@@ -12,8 +12,6 @@ System skills and generated runtime skills are intentionally excluded.
 
 ## Included Skills
 
-- `astrophysics-paper-data-finder`
-- `hatch-pet`
 - `sn-lightcurve-plot-style`
 
 ## Sync From Local Codex
@@ -55,4 +53,3 @@ git remote add origin https://github.com/<USER>/codex-skills.git
 git branch -M main
 git push -u origin main
 ```
-
