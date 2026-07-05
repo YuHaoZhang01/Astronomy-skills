@@ -1,6 +1,6 @@
 ---
 name: snfit
-description: "SNFit supernova light-curve fitting and plotting style skill. Use when Codex needs to archive or reuse the SNFit source code, build an emcee fitting workflow for any SNFit model, or output final plotting code in the user's EP250108a-fitting_Ni_Arnett.ipynb coding style: explicit constants, explicit band splits, lnprior/lnlike/lnprob, visible emcee controls, explicit ax.errorbar/ax.plot calls, and notebook-readable figure code."
+description: "SNFit supernova light-curve fitting and plotting style skill. Use when Codex needs to archive or reuse the SNFit source code, build an emcee fitting workflow for any SNFit model, or output final plotting code in the user's preferred notebook coding style: explicit constants, explicit band splits, lnprior/lnlike/lnprob, visible emcee controls, explicit ax.errorbar/ax.plot calls, and notebook-readable figure code."
 ---
 
 # SNFit
@@ -8,7 +8,7 @@ description: "SNFit supernova light-curve fitting and plotting style skill. Use 
 This skill has two responsibilities:
 
 1. Archive the SNFit source code under `src/`.
-2. Make Codex write fitting and final plotting code in the user's familiar EP250108a notebook style.
+2. Make Codex write fitting and final plotting code in the user's familiar notebook style.
 
 Keep the skill simple: `SKILL.md` contains the rules, and `src/` contains code assets and style examples.
 

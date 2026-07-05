@@ -13,7 +13,7 @@ from model import c, day
 # =========================
 # 1. Data and constants
 # =========================
-data_path = Path("./EP250108.csv")
+data_path = Path("./photometry.csv")
 outdir = Path("./emcee_out")
 outdir.mkdir(exist_ok=True)
 

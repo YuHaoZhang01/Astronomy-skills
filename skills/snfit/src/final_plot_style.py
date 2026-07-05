@@ -10,7 +10,7 @@ from model import c, day
 # =========================
 # 1. Data and constants
 # =========================
-df = pd.read_csv("./EP250108.csv", header=0)
+df = pd.read_csv("./photometry.csv", header=0)
 data = df[df["discard"] == "n"]
 
 i_band_data = data[(data["band"].str.lower() == "i") | (data["band"] == "Mephisto-i")]
@@ -147,7 +147,7 @@ ax.legend(
     shadow=False,
 )
 
-ax.set_xlabel(r"Time since EP trigger (days)", fontsize=12)
+ax.set_xlabel(r"Time since trigger (days)", fontsize=12)
 ax.set_ylabel(r"AB magnitude", fontsize=12)
 ax.set_title("Supernova light-curve model fitting", fontsize=12)
 ax.set_xlim([0.5, 100])
