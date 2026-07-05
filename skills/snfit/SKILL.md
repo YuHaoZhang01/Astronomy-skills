@@ -1,14 +1,14 @@
 ---
 name: snfit
-description: "SNFit supernova light-curve fitting and plotting style skill. Use when Codex needs to archive or reuse the SNFit source code, build an emcee fitting workflow for any SNFit model, or output final plotting code in the user's preferred notebook coding style: explicit constants, explicit band splits, lnprior/lnlike/lnprob, visible emcee controls, explicit ax.errorbar/ax.plot calls, and notebook-readable figure code."
+description: "SNFit supernova light-curve model archive and workflow guidance. Use when Codex needs to inspect or reuse the SNFit model library, build or optimize an emcee fitting workflow for a selected supernova model, or generate final light-curve plotting code in a readable notebook-oriented style with explicit constants, explicit band splits, lnprior/lnlike/lnprob, visible emcee controls, and explicit ax.errorbar/ax.plot calls."
 ---
 
 # SNFit
 
-This skill has two responsibilities:
+Use this skill for two tasks:
 
-1. Archive the SNFit source code under `src/`.
-2. Make Codex write fitting and final plotting code in the user's familiar notebook style.
+1. Preserve and reuse the SNFit source code under `src/`.
+2. Write emcee fitting and final plotting code in the user's preferred readable script/notebook shape.
 
 Keep the skill simple: `SKILL.md` contains the rules, and `src/` contains code assets and style examples.
 
@@ -18,6 +18,8 @@ Keep the skill simple: `SKILL.md` contains the rules, and `src/` contains code a
 - `src/plot_style.py`: archived plotting helper. Use it only when the user asks for reusable plot helpers.
 - `src/emcee_workflow_style.py`: generic emcee workflow style sample. It is not tied to ArnettNi or any single model.
 - `src/final_plot_style.py`: generic final plotting style sample. It is not tied to ArnettNi or any single model.
+
+Do not mention the source notebook, example event, or example target name in generated code or prose unless the user explicitly asks for it. Extract the code organization style only.
 
 ## Model Rules
 
