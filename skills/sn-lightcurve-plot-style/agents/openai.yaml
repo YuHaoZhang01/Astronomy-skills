@@ -1,4 +1,4 @@
 interface:
   display_name: "SN Light Curve Plot Style"
-  short_description: "Standard wavelength-ordered supernova light-curve plotting."
+  short_description: "Standardize SN light-curve plotting."
   default_prompt: "Use $sn-lightcurve-plot-style to make a wavelength-ordered multiband supernova light-curve plot."

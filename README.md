@@ -4,6 +4,6 @@ Personal Codex skills for astronomy research workflows, shared as reusable examp
 
 ## Skills
 
-- `astro-research-project`: organize lightweight astronomy research projects.
-- `sn-lightcurve-plot-style`: standardize multiband SN light-curve plotting.
+- `astro-research-project`: organize lightweight astronomy research projects with a stable research folder structure.
+- `sn-lightcurve-plot-style`: standardize wavelength-ordered multiband SN light-curve plotting.
 - `snfit`: preserve the SNFit model library and guide readable emcee fitting and final plotting code.

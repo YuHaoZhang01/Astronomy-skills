@@ -131,7 +131,7 @@ FILTER_SYSTEMS: dict[str, dict[str, tuple[float, str]]] = {
         "c": (518.242, BAND_COLORS["c"]),
         "o": (662.982, BAND_COLORS["o"]),
     },
-    # Current local workflow convention from the user's example notebook.
+    # Local plotting convention for Mephisto filter ordering.
     "mephisto": {
         "u": (340.000, BAND_COLORS["u"]),
         "v": (390.000, BAND_COLORS["v"]),

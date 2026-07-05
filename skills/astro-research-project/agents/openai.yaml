@@ -1,4 +1,4 @@
 interface:
   display_name: "Astro Research Project"
-  short_description: "Keep astronomy research projects clean and reproducible."
-  default_prompt: "Use this skill to initialize, organize, or extend an astronomy research project with stable top-level folders, short names, clean code placement, and clear separation between interim and final outputs."
+  short_description: "Organize astronomy research project folders."
+  default_prompt: "Use $astro-research-project to initialize or extend an astronomy research project with stable data, notebook, src, result, configs, and docs folders."
