@@ -1,0 +1,14 @@
+# Distribute only the reviewed instruction files; keep research inputs elsewhere.
+*
+!.gitignore
+!SKILL.md
+!LICENSE
+!agents/
+!agents/openai.yaml
+!references/
+!references/writing_rules.md
+!references/paragraph_patterns.md
+!references/sentence_patterns.md
+!references/rule_boundaries.md
+!references/distillation.md
+!references/provenance.md

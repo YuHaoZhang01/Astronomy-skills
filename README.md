@@ -7,3 +7,28 @@ Personal Codex skills for astronomy research workflows, shared as reusable examp
 - `astro-research-project`: organize lightweight astronomy research projects with a stable research folder structure.
 - `sn-lightcurve-plot-style`: standardize wavelength-ordered multiband SN light-curve plotting.
 - `snfit`: preserve the SNFit model library and guide readable emcee fitting and final plotting code.
+
+- [`sn-paper-writing`](skills/sn-paper-writing/SKILL.md): corpus-derived paragraph structure, sentence choices, and evidence-calibrated revision for supernova and transient papers; also supports explicitly requested local style distillation.
+
+## Supernova paper writing
+
+`sn-paper-writing` is self-contained and can use its bundled writing rules without the original reference papers or a separate `journal-adapt` installation.
+
+Install it with the existing repository helper:
+
+```powershell
+.\tools\install_to_codex_skills.ps1 -Skill sn-paper-writing
+```
+
+You can also install `skills/sn-paper-writing` from this repository using your Codex skill installer.
+
+Example request:
+
+```text
+Use $sn-paper-writing to revise the section I provide. Preserve equations,
+numerical results, citations, and claim strength, and explain the changes.
+```
+
+The public package contains instructions and anonymous structural summaries only. Reference PDFs, paper Markdown, page images, extraction caches, source manifests, and paragraph-level private audit records are excluded. New research inputs should stay in the research project, outside the skill directory.
+
+See [scope and provenance](skills/sn-paper-writing/references/provenance.md) for corpus coverage and limits. The skill adapts the MIT-licensed [journal-adapt-writing-skill](https://github.com/WantongC/journal-adapt-writing-skill) workflow; its license notice is preserved in the skill folder.

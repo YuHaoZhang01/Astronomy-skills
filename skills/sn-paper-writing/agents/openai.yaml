@@ -1,0 +1,4 @@
+interface:
+  display_name: "Supernova Paper Writing"
+  short_description: "超新星论文写作：逐段组织、证据分层、句式调整与技术内容保真"
+  default_prompt: "使用 $sn-paper-writing 检查并修订我提供的论文章节，保留公式、数值和引用，并说明实际改动依据。"
