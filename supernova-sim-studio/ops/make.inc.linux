@@ -1,0 +1,6 @@
+# Linux build settings injected beside the unmodified SNEC source tree.
+export F90=gfortran
+export F90FLAGS=-O3 -fbacktrace -ffree-line-length-none
+export LDFLAGS=$(F90FLAGS)
+export LAPACKLIBS=-llapack -lblas
+export LIBS+=$(LAPACKLIBS)

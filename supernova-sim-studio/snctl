@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
+UV_BIN="$(command -v uv 2>/dev/null || true)"
+for candidate in "$HOME/.local/bin/uv" "$HOME/.cargo/bin/uv"; do
+  if [[ -z "$UV_BIN" && -x "$candidate" ]]; then UV_BIN="$candidate"; fi
+done
+if [[ -z "$UV_BIN" ]]; then
+  echo "错误：需要 uv。" >&2
+  exit 1
+fi
+exec "$UV_BIN" run --project "$PROJECT_ROOT/backend" snctl "$@"

@@ -1,0 +1,46 @@
+services:
+  api:
+    image: snstudio-app:${SNSTUDIO_VERSION:-local}
+    build:
+      context: .
+    restart: unless-stopped
+    environment:
+      SNSTUDIO_DATA_DIR: /data
+      SNSTUDIO_FRONTEND_DIST: /app/frontend/dist
+      SNSTUDIO_SUPERSNEC_ROOT: /opt/engines/supersnec
+      SNSTUDIO_SNEC_ROOT: /opt/engines/snec-1.01
+      SNSTUDIO_STELLA_ROOT: /opt/engines/openstella
+      SNSTUDIO_WORKER_CONCURRENCY: ${SNSTUDIO_WORKER_CONCURRENCY:-4}
+      SNSTUDIO_MAX_SWEEP_RUNS: ${SNSTUDIO_MAX_SWEEP_RUNS:-500}
+    volumes:
+      - /var/lib/snstudio:/data
+      - /opt/snstudio/engines/supersnec:/opt/engines/supersnec:ro
+      - /opt/snstudio/engines/snec-1.01:/opt/engines/snec-1.01:ro
+      - /opt/snstudio/engines/openstella:/opt/engines/openstella:ro
+    ports:
+      - "127.0.0.1:8787:8787"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8787/api/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  worker:
+    image: snstudio-app:${SNSTUDIO_VERSION:-local}
+    restart: unless-stopped
+    command: ["python", "-m", "snstudio.worker"]
+    environment:
+      SNSTUDIO_DATA_DIR: /data
+      SNSTUDIO_SUPERSNEC_ROOT: /opt/engines/supersnec
+      SNSTUDIO_SNEC_ROOT: /opt/engines/snec-1.01
+      SNSTUDIO_STELLA_ROOT: /opt/engines/openstella
+      SNSTUDIO_WORKER_CONCURRENCY: ${SNSTUDIO_WORKER_CONCURRENCY:-4}
+      SNSTUDIO_MAX_SWEEP_RUNS: ${SNSTUDIO_MAX_SWEEP_RUNS:-500}
+    volumes:
+      - /var/lib/snstudio:/data
+      - /opt/snstudio/engines/supersnec:/opt/engines/supersnec:ro
+      - /opt/snstudio/engines/snec-1.01:/opt/engines/snec-1.01:ro
+      - /opt/snstudio/engines/openstella:/opt/engines/openstella:ro
+    depends_on:
+      api:
+        condition: service_healthy

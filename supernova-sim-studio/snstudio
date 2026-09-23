@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
+UV_BIN="$(command -v uv 2>/dev/null || true)"
+for candidate in "$HOME/.local/bin/uv" "$HOME/.cargo/bin/uv"; do
+  if [[ -z "$UV_BIN" && -x "$candidate" ]]; then UV_BIN="$candidate"; fi
+done
+if [[ -z "$UV_BIN" ]]; then
+  echo "错误：需要 uv（https://docs.astral.sh/uv/）。" >&2
+  exit 1
+fi
+
+"$UV_BIN" sync --project "$PROJECT_ROOT/backend" --frozen >/dev/null
+
+if [[ "${1:-}" == "start" && ! -f "$PROJECT_ROOT/frontend/dist/index.html" ]]; then
+  PNPM_BIN="$(command -v pnpm 2>/dev/null || true)"
+  for candidate in "$HOME/.local/share/pnpm/pnpm" "$HOME"/.nvm/versions/node/*/bin/pnpm "$HOME"/.local/config/nvm/versions/node/*/bin/pnpm; do
+    if [[ -z "$PNPM_BIN" && -x "$candidate" ]]; then PNPM_BIN="$candidate"; fi
+  done
+  if [[ -z "$PNPM_BIN" ]]; then
+    echo "错误：前端尚未构建，并且找不到 pnpm。" >&2
+    exit 1
+  fi
+  (cd "$PROJECT_ROOT/frontend" && "$PNPM_BIN" install --frozen-lockfile && "$PNPM_BIN" run build)
+fi
+
+exec "$UV_BIN" run --project "$PROJECT_ROOT/backend" snstudio "$@"

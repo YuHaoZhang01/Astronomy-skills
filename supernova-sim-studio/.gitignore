@@ -1,0 +1,17 @@
+.DS_Store
+.env
+.env.*
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+frontend/node_modules/
+frontend/dist/
+.runtime/
+dist/
+build/
+*.egg-info/

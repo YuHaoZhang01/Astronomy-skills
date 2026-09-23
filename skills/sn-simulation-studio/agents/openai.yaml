@@ -1,0 +1,7 @@
+interface:
+  display_name: "超新星模拟台"
+  short_description: "控制 SNEC/OpenStella 运行、扫描、日志与结果"
+  brand_color: "#40C9FF"
+  default_prompt: "Use $sn-simulation-studio to diagnose my SNEC/OpenStella engines and preview a simulation before submission."
+policy:
+  allow_implicit_invocation: true

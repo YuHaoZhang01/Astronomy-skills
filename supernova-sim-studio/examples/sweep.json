@@ -1,0 +1,21 @@
+{
+  "project_id": "default",
+  "engine_id": "supersnec",
+  "profile_id": "builtin:supersnec:stripped_star",
+  "name": "Ni mass × explosion energy",
+  "base_parameters": {
+    "imax": 100,
+    "tend": 5000000
+  },
+  "axes": {
+    "Ni_mass": {
+      "kind": "list",
+      "values": [0.03, 0.05]
+    },
+    "final_energy": {
+      "kind": "list",
+      "values": [1e51, 2e51]
+    }
+  },
+  "output_mode": "minimal"
+}
