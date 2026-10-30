@@ -1,4 +1,4 @@
 interface:
   display_name: "Astro Research Project"
-  short_description: "Organize astronomy research project folders."
-  default_prompt: "Use $astro-research-project to initialize or extend an astronomy research project with stable data, notebook, src, result, configs, and docs folders."
+  short_description: "Separate research exploration from selected valuable results."
+  default_prompt: "Use $astro-research-project to organize this astronomy project into exploration/ for early work and intermediate outputs, and final/ for selected valuable results with reproducible code, configs, and input provenance."

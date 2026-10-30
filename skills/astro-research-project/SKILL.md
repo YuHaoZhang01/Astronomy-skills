@@ -1,120 +1,94 @@
 ---
 name: astro-research-project
-description: "Create, organize, and extend lightweight astronomy or astrophysics research projects. Use when Codex needs to initialize a research folder, reorganize project files, place notebooks, data, source code, configs, docs, plots, tables, logs, or later analysis outputs under a stable data/notebook/src/result/configs/docs structure while keeping names short and work reproducible."
+description: "Organize astronomy research into exploration and final workspaces. Use when initializing or changing research project layouts, placing experiments and intermediate outputs, or preserving selected valuable results with reproducible code, configs, and data provenance."
 ---
 
 # Astro Research Project
 
-Use light engineering discipline for astronomy research work. Keep projects clean and reproducible without turning them into software products.
+Separate the research process from the results worth keeping. Keep practical, reproducible workflows without turning a research project into a software product.
 
-## Structure
+## Two primary folders
 
-Use these top-level folders:
+Organize by maturity first, then by file responsibility:
 
 ```text
 project_name/
-+-- data/
-+-- notebook/
-+-- src/
-+-- result/
-+-- configs/
-+-- docs/
+|-- README.md
+|-- exploration/                Early work and the complete exploratory process
+|   |-- README.md               Questions, attempts, commands, and findings
+|   `-- <topic>/                Group related attempts by scientific question
+|       |-- src/
+|       |-- notebook/
+|       |-- configs/
+|       |-- data/
+|       |-- result/
+|       `-- docs/
+`-- final/                      Selected valuable results and their reproduction
+    |-- README.md               Result index, value, provenance, and commands
+    |-- src/                    Stable analysis and plotting entry scripts
+    |-- configs/                Parameters for the selected results
+    |-- data/                   Frozen inputs or immutable input references
+    |-- result/                 Selected figures, tables, and other products
+    `-- docs/                   Interpretation, checks, and source mapping
 ```
 
-When initializing a project, create the six folders and a concise root `README.md`. For later work, preserve this structure and avoid unnecessary second-level folders or empty placeholder files.
+Use `exploration/` and `final/` as the two primary work areas. The six responsibility folders belong inside these areas; they are no longer a mandatory top-level layout. Create subfolders only when actual work needs them. A small exploration can start directly under `exploration/`; introduce topics when distinct scientific questions justify them.
 
-## Placement
+Keep root metadata and necessary existing infrastructure. Large raw archives and external engines may stay at their current locations with documented references. Do not duplicate them merely to match the tree.
 
-Place files by responsibility:
+## Route work by maturity
 
-- `data/`: input data and derived datasets. Preserve raw inputs; write cleaned or merged data as new files.
-- `notebook/`: exploratory notebooks, quick checks, temporary analysis, and interactive inspection.
-- `src/`: reusable or formal Python code for loading, cleaning, analysis, fitting, plotting, and small workflows.
-- `result/`: generated figures, tables, logs, model outputs, and intermediate products.
-- `configs/`: paths, thresholds, sample definitions, column names, units, cosmology, plotting settings, and run parameters.
-- `docs/`: project notes, data provenance, processing decisions, figure notes, paper notes, and explanations for later reuse.
+- Put initial ideas, literature/data checks, notebooks, trial code, debugging, parameter scans, intermediate data, diagnostic plots, logs, and unsuccessful attempts in `exploration/`.
+- If a result's status is unspecified, keep it in `exploration/`. Finishing a run or producing an attractive plot does not make it final.
+- Put selected, checked results worth retaining in `final/`: scientific findings, figures, tables, useful datasets, fitted parameters, or reusable analysis products. They do not have to be part of a manuscript or ready for publication.
+- Treat the user's request to retain a result, prepare a final deliverable, or promote a named finding as selection; do not ask for the same selection again. Otherwise, suggest candidates while keeping them exploratory.
+- Keep later experiments and alternative versions in `exploration/`. Update the retained result when the improved version is selected, preserving the provenance of earlier retained or submitted versions.
 
-Separate interim checks from final outputs only when both exist. Use short subfolders such as `result/interim/` and `result/final/` when that distinction helps.
+## Place files within each area
 
-Do not move, overwrite, or delete original data unless the user explicitly asks.
+- `src/`: analysis, fitting, simulation helpers, and plotting code. Keep topic-specific code with its topic; use `exploration/src/` for genuinely shared exploratory helpers.
+- `notebook/`: interactive exploration and checks. A retained result should also have a clear reproduction command or documented notebook execution order.
+- `data/`: inputs and derived datasets. Preserve raw inputs and write transformed data as new files.
+- `configs/`: scientific parameters, sample definitions, units, paths, plotting settings, and run settings.
+- `result/`: generated plots, tables, model products, and logs. Exploratory outputs stay under `exploration/`; selected products go under `final/result/`.
+- `docs/` and README files: assumptions, provenance, decisions, interpretation, and reproduction instructions. Personal understanding and knowledge-base tasks follow the user's vault location and rules.
 
-## Naming
+Add `final/manuscript/` only when manuscript work is in scope. Figure source scripts normally live in `final/src/`; if a manuscript already uses a dedicated figure-script folder, preserve that clear convention. Generated PDF/PNG files still belong under `final/result/`.
 
-Use short, readable names.
+## Promote a valuable result
 
-- Use lowercase `snake_case` for code, data products, figures, tables, and config files.
-- Prefer 1 to 3 words for code files.
-- Prefer 2 to 4 words for figures and tables.
-- Avoid names such as `new`, `old`, `final_final`, `version2`, or `updated`.
-- Put parameter details, sample definitions, and version notes in `configs/`, `docs/`, logs, or README text instead of long filenames.
+Promotion preserves a reproducible result, not just a copied image.
 
-Good examples:
+1. Identify the selected result, why it is useful, its scientific assumptions, source exploration, and relevant checks.
+2. Bring only the necessary analysis/plotting code, focused configs, and inputs into `final/`. Keep the exploratory history in place. Reuse stable methods through a pinned dependency or preserve the required implementation with source provenance; avoid two diverging active copies of a solver.
+3. Freeze the required input tables/curves, or reference immutable external inputs with location, checksum/version, and retrieval instructions. Retained results must not silently read changing exploratory outputs, a `latest` folder, or whichever run happens to be newest.
+4. Separate expensive model generation from quick plotting. Document both commands and the required settings; a plotting command should not unexpectedly launch an expensive simulation.
+5. Record each retained result's purpose, source exploration/run, entry script, config, inputs, outputs, reproduction command, and checks in `final/README.md` or a compact manifest.
+6. Reproduce the selected product, check the relevant numerical invariants, and visually inspect retained figures. Use matching PDF and PNG outputs for publication-style figures when appropriate; other products should use formats suited to their purpose.
 
-```text
-z_dist.pdf
-lc_fit.pdf
-cmd_plot.png
-sample_table.csv
-fit_params.yaml
-make_sample.py
-plot_lc.py
-```
+Keep scientific model changes in analysis code/configs rather than hidden inside stylistic plot edits. Distinguish simulations, fits, controlled remappings, and schematic illustrations in result notes. Do not overwrite frozen inputs or submitted versions silently.
 
-Avoid:
+## Names, paths, and practical code
 
-```text
-redshift_distribution_for_all_type_ibn_supernovae_after_quality_filter_with_bin_size_0p02.pdf
-final_final_revised_plot_version3.png
-comprehensive_analysis_pipeline_with_all_quality_filters.py
-```
+- Use short lowercase `snake_case` filenames describing the question or result, such as `lc_fit.pdf`, `fit_params.yaml`, or `plot_lc.py`. Include a manuscript figure ID only when applicable. Put parameter/version details in configs or provenance records instead of long filenames or `final_final` names.
+- Resolve paths from the script or an explicitly supplied project root, supporting execution from another current working directory. Check path depth after migrations rather than assuming every script has the same `parents[n]`.
+- Avoid new machine-specific absolute paths in portable configs. Follow the user's required Python interpreter when running or documenting local commands.
+- Prefer ordinary functions and standard scientific Python libraries. Keep repeated logic in `src/` and variable scientific parameters in focused configs. Introduce packages, services, or workflow frameworks only when the work actually needs them.
+- Use clear figure labels, units, legends, and relevant notes. Keep code/configs as the reproducible source of truth rather than relying only on manually edited figures.
 
-## Code
+## Existing projects
 
-Keep code practical and research-oriented.
+Inspect README files, entry scripts, imports, configs, raw data, and external engines before proposing moves. Respect established names such as `paper/` when they already serve the selected-results role, and explain the mapping to `final/` rather than adding a competing third area.
 
-- Do not create a complex package, class hierarchy, web app, database, Docker setup, or CI workflow unless the user asks.
-- Put repeated logic in functions under `src/`.
-- Keep one-off workflow scripts short and readable.
-- Move configurable scientific parameters to `configs/` when they may change.
-- Prefer `numpy`, `pandas`, `scipy`, `matplotlib`, `astropy`, and `pyyaml` when useful.
-- Use `astropy` for FITS, coordinates, time, units, and cosmology when relevant.
+A request to update this skill changes the rules; it does not by itself authorize moving files in unrelated research projects. For a design-only task, provide the target tree and current-to-target mapping while preserving working entrypoints.
 
-Use short module names only when the project needs them:
+When a project migration is requested:
 
-```text
-io.py
-clean.py
-analyze.py
-plot.py
-utils.py
-```
+1. Map complete workflows and their dependencies to the two areas. Keep provisional work in exploration; retain only selected results in the final area.
+2. Migrate a coherent workflow at a time, updating imports, paths, configs, documentation, and output destinations together. Preserve original data and useful exploratory history; do not remove them as cleanup.
+3. Verify a small reproduction from another working directory and compare scientific outputs to the previous version. Directory changes must not silently change the science.
+4. Keep a move map for substantial migrations. Check resolved paths before recursive moves or deletion and follow host safety rules.
 
-## Figures And Tables
+## Completion
 
-Save generated outputs under `result/` unless an existing project convention is already clearer.
-
-- Use PDF for publication-style figures and PNG for quick checks.
-- Use clear labels, units, legends, and captions or notes where appropriate.
-- Make figures reproducible from code and config whenever possible.
-- Do not treat manually edited figures as the only source of truth.
-
-When the user asks for a plot, classify it as exploratory, diagnostic, or final. If unclear, save it as interim until the user confirms it is final.
-
-## Configs And Docs
-
-Use `configs/default.yaml` for simple projects. Add focused files such as `paths.yaml`, `sample.yaml`, `plotting.yaml`, or `cosmology.yaml` only when useful.
-
-Update `README.md` or `docs/` when initializing a project or substantially changing structure, workflow, data provenance, configs, output locations, or final results.
-
-Keep documentation concise. Record decisions that would matter after several months.
-
-## Completion Check
-
-Before finishing:
-
-1. Confirm new files follow the six-folder structure.
-2. Confirm names are short, stable, and descriptive.
-3. Confirm raw data was preserved.
-4. Confirm interim and final outputs are distinguishable when needed.
-5. Confirm configurable scientific parameters are not scattered through code.
-6. Update README or docs when the project structure, workflow, or outputs changed.
+Confirm that exploratory work and selected results are separated, raw data and exploratory history are preserved, and each retained result has a usable reproduction path. State what was physically changed, what remains in the existing layout, and where the selected outputs and reproduction commands are located.
